@@ -2,14 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 #include "FrogModel.h"
+#include "CarModel.h"
 #include "FrogModelGraphics.h"
+#include "CarModelGraphics.h"
 
 class GameGraphics
 {
 public:
 	GameGraphics();
-	void Update(sf::RenderWindow* window, std::unordered_map<std::string, FrogModel*> allModels); //zamiast frogModel zrobiæ Model, po którym bêd¹ dziedziczyæ inne modele
+	void Update(sf::RenderWindow* window, std::unordered_map<std::string, Model*> allModels);
 
-private:
-	//FrogModelGraphics* frogModelGraphics;
 };

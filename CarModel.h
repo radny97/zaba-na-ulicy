@@ -1,11 +1,11 @@
 #pragma once
 #include "Model.h"
 
-class FrogModel : public Model
+class CarModel : public Model
 {
 public:
-	FrogModel();
-	FrogModel(float x, float y)
+	CarModel();
+	CarModel(float x, float y)
 	{
 		this->posX = x;
 		this->posY = y;

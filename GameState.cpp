@@ -18,10 +18,10 @@ void GameState::Update(sf::RenderWindow* window)
 
 }
 
-void GameState::Render(sf::RenderWindow* window)
-{
+//void GameState::Render(sf::RenderWindow* window)
+//{
 	
-}
+//}
 
 void GameState::Destroy(sf::RenderWindow* window)
 {

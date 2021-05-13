@@ -1,16 +1,8 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "ModelGraphics.h"
 
-class FrogModelGraphics : public sf::Sprite
+class FrogModelGraphics : public ModelGraphics
 {
 public:
 	FrogModelGraphics();
-
-	float posX;
-	float posY;
-
-	void Load(std::string filename);
-
-private:
-	sf::Texture* texture;
 };

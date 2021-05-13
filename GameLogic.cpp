@@ -4,9 +4,11 @@ GameLogic::GameLogic()
 {
 	this->frogModel = new FrogModel(100,100);
 	this->allModels.insert(std::make_pair("0", this->frogModel));
+	Model* carModel = new CarModel(200, 200);
+	this->allModels.insert(std::make_pair("1", carModel));
 }
 
-std::unordered_map<std::string, FrogModel*> GameLogic::Update()
+std::unordered_map<std::string, Model*> GameLogic::Update()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
