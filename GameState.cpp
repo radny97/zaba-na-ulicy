@@ -1,18 +1,21 @@
 #include "GameState.h"
 
-GameState::GameState(StateMachine* core_state)
+GameState::GameState(StateMachine* stateMachine)
 {
-	this->core_state = core_state;
+	this->stateMachine = stateMachine;
 }
 
 void GameState::Initialize(sf::RenderWindow* window)
 {
-	
+	this->gameLogic = new GameLogic();
+	this->gameGraphics = new GameGraphics();
 }
 
 void GameState::Update(sf::RenderWindow* window)
 {
-	
+	//this->gameLogic->Update();
+	this->gameGraphics->Update(window, this->gameLogic->Update());
+
 }
 
 void GameState::Render(sf::RenderWindow* window)

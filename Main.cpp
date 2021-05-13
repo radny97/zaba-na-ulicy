@@ -28,7 +28,7 @@ int main()
 			window.clear();
 
 			stateMachine.Update();
-			stateMachine.Render();
+			//stateMachine.Render();
 
 			window.display();
 			timer.restart();
