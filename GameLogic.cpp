@@ -3,7 +3,7 @@
 GameLogic::GameLogic()
 {
 	this->frogObject = new FrogObject(100,100);
-	this->allObjects.insert(std::make_pair(this->frogObject->GetStringWithTypeAndID(), this->frogObject));
+	this->allObjects.insert(std::make_pair(this->frogObject->ID, this->frogObject));
 
 }
 
@@ -18,7 +18,7 @@ void GameLogic::UpdateLogic()
 
 }
 
-std::unordered_map<std::string, Object*> GameLogic::GetAllObjects()
+std::unordered_map<int, Object*> GameLogic::GetAllObjects()
 {
 	return this->allObjects;
 }
@@ -57,5 +57,5 @@ bool GameLogic::IsTimeToGenerateCar()
 void GameLogic::GenerateCar()
 {
 	Object* carObject = new CarObject(200, 200);
-	this->allObjects.insert(std::make_pair(carObject->GetStringWithTypeAndID(), carObject));
+	this->allObjects.insert(std::make_pair(carObject->ID, carObject));
 }

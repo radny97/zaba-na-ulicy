@@ -14,7 +14,9 @@ void GameState::Initialize(sf::RenderWindow* window)
 void GameState::Update(sf::RenderWindow* window)
 {
 	this->gameLogic->UpdateLogic();
-	this->gameGraphics->Update(window, this->gameLogic->GetAllObjects());
+
+	this->gameGraphics->Update(this->gameLogic->GetAllObjects());
+	this->gameGraphics->Render(window);
 }
 
 void GameState::Destroy(sf::RenderWindow* window)

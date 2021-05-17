@@ -2,96 +2,93 @@
 
 GameGraphics::GameGraphics()
 {
-	
+
 }
 
-void GameGraphics::Update(sf::RenderWindow* window, std::unordered_map<std::string, Object*> allModels)
+void GameGraphics::Update(std::unordered_map<int, Object*> allModels)
 {
-	std::regex wzorzec("\d+$");
-	for (auto& iterator : allModels) //przejdz po liscie z zewn¹trz
+	this->spritesToDelete = this->allObjectSprites;
+
+	MapAllObjectsToObjectSprites(allModels);
+	DeleteSpritesOfObjectsThatNoLongerExist();
+}
+
+void GameGraphics::MapAllObjectsToObjectSprites(std::unordered_map<int, Object*> allObjects)
+{
+	for (auto& iteratorObjects : allObjects)
 	{
-		if (!this->listOfObjectSprites.empty())
+		bool newSpriteNeedsToBeAdded = true;
+
+		for (auto& iteratorObjectSprites : this->allObjectSprites)
 		{
-			for (const auto& i : this->listOfObjectSprites) //przejdz po liscie wewnatrz
+			if (iteratorObjects.second->ID == iteratorObjectSprites.second->ID)
 			{
-				if (iterator.second->ID != i->ID)
-				{
-					std::smatch wynik; // tutaj bêdzie zapisany wynik
-					if (std::regex_search(iterator.first, wynik, wzorzec))
-					{
-						if (wynik[0] == "frog")
-						{
-							ObjectSprite* frogObjectSprite = new FrogObjectSprite();
-							frogObjectSprite->posX = iterator.second->posX;
-							frogObjectSprite->posY = iterator.second->posY;
-							frogObjectSprite->ID = iterator.second->ID;
-							this->listOfObjectSprites.push_front(frogObjectSprite);
-						}
-						else if (wynik[0] == "car")
-						{
-							ObjectSprite* carObjectSprite = new CarObjectSprite();
-							carObjectSprite->posX = iterator.second->posX;
-							carObjectSprite->posY = iterator.second->posY;
-							carObjectSprite->ID = iterator.second->ID;
-							this->listOfObjectSprites.push_front(carObjectSprite);
-						}
-					}
-				}
-			}
-		}
-		else
-		{
-			std::smatch wynik; // tutaj bêdzie zapisany wynik
-			if (std::regex_search(iterator.first, wynik, wzorzec))
-			{
-				if (wynik[0] == "frog")
-				{
-					ObjectSprite* frogObjectSprite = new FrogObjectSprite();
-					frogObjectSprite->posX = iterator.second->posX;
-					frogObjectSprite->posY = iterator.second->posY;
-					frogObjectSprite->ID = iterator.second->ID;
-					this->listOfObjectSprites.push_front(frogObjectSprite);
-				}
-				else if (wynik[0] == "car")
-				{
-					ObjectSprite* carObjectSprite = new CarObjectSprite();
-					carObjectSprite->posX = iterator.second->posX;
-					carObjectSprite->posY = iterator.second->posY;
-					carObjectSprite->ID = iterator.second->ID;
-					this->listOfObjectSprites.push_front(carObjectSprite);
-				}
+				MapOneObjectToSprite(iteratorObjects.second, iteratorObjectSprites.second);
+				newSpriteNeedsToBeAdded = false;
+
+				this->spritesToDelete.erase(iteratorObjects.second->ID);
 			}
 		}
 
-		
-		
-	}
+		if (newSpriteNeedsToBeAdded == true)
+		{
+			ObjectSprite* objectSprite = ChooseTypeOfNewObjectStripe(iteratorObjects.second);
 
-	for (const auto& i : this->listOfObjectSprites)
+			MapOneObjectToSprite(iteratorObjects.second, objectSprite);
+			this->allObjectSprites.insert(std::make_pair(objectSprite->ID, objectSprite));
+		}
+	}
+}
+
+void GameGraphics::MapOneObjectToSprite(Object* source, ObjectSprite* target)
+{
+	if (source->type == "frog")
 	{
-		i->setPosition(i->posX, i->posY);
-		window->draw(*i);
+		target->posX = source->posX;
+		target->posY = source->posY;
+		target->ID = source->ID;
 	}
+	else if (source->type == "car")
+	{
+		target->posX = source->posX;
+		target->posY = source->posY;
+		target->ID = source->ID;
+	}
+	/*else if (source->type == "playground")
+	{
+		target->posX = source->posX;
+		target->posY = source->posY;
+		target->ID = source->ID;
+	}*/
+	target->setPosition(target->posX, target->posY);
+}
 
-	////mapowanie model na modelGraphics
-	//Object* frogModel = new FrogObject();
-	//frogModel = allModels.at("frog");
+ObjectSprite* GameGraphics::ChooseTypeOfNewObjectStripe(Object* source)
+{
+	if (source->type == "frog")
+	{
+		return new FrogObjectSprite();
+	}
+	else if (source->type == "car")
+	{
+		return new CarObjectSprite();
+	}
+	else return new ObjectSprite();
+}
 
-	////Object* carModel = new CarObject();
-	////carModel = allModels.at("car");
+void GameGraphics::DeleteSpritesOfObjectsThatNoLongerExist()
+{
+	for (auto& iterator : this->spritesToDelete)
+	{
+		delete this->allObjectSprites.at(iterator.second->ID);
+		this->allObjectSprites.erase(iterator.second->ID);
+	}
+}
 
-	//ObjectSprite* frogObjectSprite = new FrogObjectSprite();
-	//frogObjectSprite->posX = frogModel->posX;
-	//frogObjectSprite->posY = frogModel->posY;
-
-	//frogObjectSprite->setPosition(frogObjectSprite->posX, frogObjectSprite->posY);
-
-	////ObjectSprite* carObjectSprite = new CarObjectSprite();
-	////carObjectSprite->posX = carModel->posX;
-	////carObjectSprite->posY = carModel->posY;
-
-	////carObjectSprite->setPosition(carObjectSprite->posX, carObjectSprite->posY);
-
-	//window->draw(*frogObjectSprite);
-	////window->draw(*carObjectSprite);
+void GameGraphics::Render(sf::RenderWindow* window)
+{
+	for (auto& iteratorObjectSprites : this->allObjectSprites)
+	{
+		window->draw(*iteratorObjectSprites.second);
+	}
 }

@@ -1,12 +1,11 @@
 #pragma once
 #include <string>
+#include <cmath>
 
 class Object
 {
 public:
 	Object() {};
-
-	std::string GetStringWithTypeAndID();
 
 	float posX;
 	float posY;
