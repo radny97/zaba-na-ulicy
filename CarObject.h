@@ -12,8 +12,18 @@ public:
 		this->type = "car";
 		this->ID = GenerateID();
 		this->fromDownToUp = fromDownToUp;
+
+		UpdateCollisionPoints();
 	}
+
+	bool CheckIfCollisionPointIsInBounds(Point point) override;
 	void Move(int velocity) override;
 
+	Point *frontCollisionPoint; //middle of front bumper of car
+	Point *backCollisionPoint; //middle of back bumper of car
+
 	bool fromDownToUp;
+
+private:
+	void UpdateCollisionPoints();
 };

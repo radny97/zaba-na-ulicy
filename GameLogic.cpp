@@ -18,7 +18,30 @@ GameLogic::GameLogic()
 void GameLogic::UpdateLogic()
 {
 	//bedzie coœ w rodzaju animacji, które bêd¹ polegaæ na zmianie "stanu" obiektu, po up³yniêciu czasu mierzonego tutaj
+
+	//tu bêdzie pêtla wszystkich obiektów w której bêdzie coœ w stylu Object.Update()
 	UpdateCar();
+
+	for (auto& firstLoopObject : this->allObjects)
+	{
+		for (auto& secondLoopObject : this->allObjects)
+		{
+			if (firstLoopObject.second != secondLoopObject.second)
+			{
+				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == collisionType::carCarColision)
+				{
+					//tutaj coœ ze zmian¹ 
+				}
+				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == collisionType::frogCarCollision)
+				{
+					this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
+					this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+				}
+			}
+		}
+	}
+
+
 
 	if (IsTimeToGenerateCar())
 	{
@@ -41,6 +64,30 @@ void GameLogic::UpdateLogic()
 std::unordered_map<int, Object*> GameLogic::GetAllObjects()
 {
 	return this->allObjects;
+}
+
+collisionType GameLogic::CheckCollision(Object* firstObject, Object* secondObject)
+{
+	if (firstObject->type == "car")
+	{
+		CarObject* car;
+		car = dynamic_cast<CarObject*>(firstObject);
+		if (secondObject->CheckIfCollisionPointIsInBounds(*car->frontCollisionPoint) 
+		|| secondObject->CheckIfCollisionPointIsInBounds(*car->backCollisionPoint))
+		{
+			if (secondObject->type == "frog")
+			{
+				std::cout << "kolizja ¿aba samochód";// << std::endl << std::endl;
+				return collisionType::frogCarCollision;
+			}
+			if (secondObject->type == "car")
+			{
+				std::cout << "kolizja samochód samochód";// << std::endl << std::endl;
+				return collisionType::carCarColision;
+			}
+		}
+	}
+	return collisionType::noCollision;
 }
 
 void GameLogic::InputControl()
@@ -73,7 +120,7 @@ void GameLogic::UpdateCar()
 		AddCarToDeleteListIfItDroveOfPlayground(iterator.second);
 		if (iterator.second->type == "car")
 		{
-			iterator.second->Move(mediumVelocity);
+			iterator.second->Move(slowVelocity);
 		}
 	}
 }

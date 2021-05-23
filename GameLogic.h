@@ -3,16 +3,9 @@
 #include "CarObject.h"
 #include "Playground.h"
 #include <SFML/Graphics.hpp>
+#include "Enums.h"
 #include <unordered_map>
-
-enum velocity
-{
-	verySlowVelocity = 1,
-	slowVelocity = 3,
-	mediumVelocity = 5,
-	fastVelocity = 7,
-	veryFastVelocity = 9
-};
+#include <iostream> /////////////////////////////////////////
 
 class GameLogic
 {
@@ -26,6 +19,8 @@ public:
 	void GenerateCar(Track track);
 	void InputControl();
 	void DeleteObjects();
+
+	collisionType CheckCollision(Object* firstObject, Object* secondObject);
 
 private:
 	Object* frogObject;

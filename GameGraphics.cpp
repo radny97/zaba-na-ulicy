@@ -46,6 +46,15 @@ void GameGraphics::MapAllObjectsToObjectSprites(std::unordered_map<int, Object*>
 
 void GameGraphics::MapOneObjectToSprite(Object* source, ObjectSprite* target)
 {
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Trzeba poprawiæ mapowanie z u¿yciem dynamic cast tak jak na przyk³adzie ni¿ej
+	//aby móc mapowaæ pola specyficzne dla ka¿dego obiektu pochodnego
+	//i nie robiæ ha³tury
+
+	CarObject *kp;
+	kp = dynamic_cast<CarObject*>(source);
+
+
 	if (source->type == "frog")
 	{
 		target->posX = source->posX;

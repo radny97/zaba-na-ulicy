@@ -163,6 +163,7 @@
     <ClInclude Include="ApplicationState.h" />
     <ClInclude Include="CarObject.h" />
     <ClInclude Include="CarObjectSprite.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="FrogObject.h" />
     <ClInclude Include="FrogObjectSprite.h" />
     <ClInclude Include="GameGraphics.h" />

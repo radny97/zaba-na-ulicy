@@ -12,8 +12,8 @@ void Playground::GeneratePlayground(int widthOfWindow, int heightOfWindow)
 {
 	//tu bêdzie jakieœ losowanie wed³ug levela gry
 	int numberOfTracks = 4;
-	int widthOfTrack = 120;
-	int widthOfSpaceBetweenTracks = 50;
+	int widthOfTrack = 140;
+	int widthOfSpaceBetweenTracks = 60;
 
 	std::list<int> xCoordinatesOfFrogStandingPoints;
 

@@ -12,5 +12,6 @@ public:
 		this->type = "frog";
 		this->ID = GenerateID();
 	}
+	bool CheckIfCollisionPointIsInBounds(Point point) override;
 	void SetPosX(float x) override;
 };
