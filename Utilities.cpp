@@ -1,5 +1,7 @@
 #include "Utilities.h"
 
+int Utilities::playerLives = 3;
+
 int Utilities::screenResolutionX = 1920;//1280;
 int Utilities::screenResolutionY = 1080;//720;
 

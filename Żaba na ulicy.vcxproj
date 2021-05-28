@@ -151,14 +151,18 @@
     <ClCompile Include="FrogObjectSprite.cpp" />
     <ClCompile Include="GameGraphics.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="HudGraphics.cpp" />
+    <ClCompile Include="LivesSprite.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectSprite.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlaygroundLogic.cpp" />
     <ClCompile Include="PlaygroundSprite.cpp" />
     <ClCompile Include="PlaygroundGraphics.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="ScoreText.cpp" />
     <ClCompile Include="TrackSprite.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
@@ -172,12 +176,16 @@
     <ClInclude Include="GameGraphics.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="HudGraphics.h" />
+    <ClInclude Include="LivesSprite.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectSprite.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="PlaygroundLogic.h" />
     <ClInclude Include="PlaygroundSprite.h" />
     <ClInclude Include="PlaygroundGraphics.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="ScoreText.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="TrackSprite.h" />
     <ClInclude Include="Utilities.h" />

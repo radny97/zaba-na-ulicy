@@ -2,6 +2,8 @@
 class Utilities
 {
 public:
+	static int playerLives;
+
 	static int screenResolutionX;
 	static int screenResolutionY;
 

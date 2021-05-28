@@ -13,6 +13,8 @@ GameLogic::GameLogic()
 
 	this->allObjects.insert(std::make_pair(this->frogObject->ID, this->frogObject));
 
+	this->player = new Player();
+
 }
 
 void GameLogic::UpdateLogic()
@@ -28,14 +30,19 @@ void GameLogic::UpdateLogic()
 		{
 			if (firstLoopObject.second != secondLoopObject.second)
 			{
-				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == collisionType::carCarColision)
+				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == CollisionType::carCarColision)
 				{
 					//tutaj coœ ze zmian¹ prêdkoœci itp
 				}
-				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == collisionType::frogCarCollision)
+				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == CollisionType::frogCarCollision)
 				{
+					this->player->score -= (this->playground->frogStandingPoints.size() - 1 - this->positionOfFrogIterator);
 					this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
 					this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+					if (this->player->lives != 0)
+					{
+						this->player->lives -= 1;
+					}
 				}
 			}
 		}
@@ -71,7 +78,7 @@ PlaygroundLogic* GameLogic::GetPlaygroundLogic()
 	return this->playground;
 }
 
-collisionType GameLogic::CheckCollision(Object* firstObject, Object* secondObject)
+CollisionType GameLogic::CheckCollision(Object* firstObject, Object* secondObject)
 {
 	if (firstObject->type == "car")
 	{
@@ -83,16 +90,16 @@ collisionType GameLogic::CheckCollision(Object* firstObject, Object* secondObjec
 			if (secondObject->type == "frog")
 			{
 				std::cout << "kolizja ¿aba samochód";// << std::endl << std::endl;
-				return collisionType::frogCarCollision;
+				return CollisionType::frogCarCollision;
 			}
 			if (secondObject->type == "car")
 			{
 				std::cout << "kolizja samochód samochód";// << std::endl << std::endl;
-				return collisionType::carCarColision;
+				return CollisionType::carCarColision;
 			}
 		}
 	}
-	return collisionType::noCollision;
+	return CollisionType::noCollision;
 }
 
 void GameLogic::InputControl()
@@ -103,6 +110,7 @@ void GameLogic::InputControl()
 		{
 			this->positionOfFrogIterator--;
 			this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+			this->player->score++;
 		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKeyPressed)
@@ -111,6 +119,7 @@ void GameLogic::InputControl()
 		{
 			this->positionOfFrogIterator++;
 			this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+			this->player->score--;
 		}
 	}
 
@@ -169,4 +178,15 @@ void GameLogic::DeleteObjects()
 		delete toDelete;
 	}
 	this->objectsToDelete.clear();
+}
+
+
+SubStateOfGame GameLogic::GetSubStateOfGame()
+{
+	return this->subState;
+}
+
+void GameLogic::SetSubStateOfGame(SubStateOfGame subState)
+{
+	this->subState = subState;
 }

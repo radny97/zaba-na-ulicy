@@ -2,7 +2,15 @@
 
 GameGraphics::GameGraphics()
 {
-	
+	for (int i = 0; i < Utilities::playerLives; i++)
+	{
+		ObjectSprite* live = new LivesSprite();
+		live->posY = 120;
+		live->posX = 40 + (i * 90); //////////////////////////bez hardkodowania
+		live->setPosition(live->posX, live->posY);
+		this->livesSprites.push_back(live);
+	}
+	this->scoreText = new ScoreText();
 }
 
 void GameGraphics::SetPlaygroundGraphics(PlaygroundLogic* playgroundLogic)
@@ -41,6 +49,18 @@ void GameGraphics::Update(std::unordered_map<int, Object*> allModels)
 	if (!this->spritesToDelete.empty())
 	{
 		DeleteSpritesOfObjectsThatNoLongerExist();
+	}
+}
+
+void GameGraphics::UpdateHud(Player* player)
+{
+	//mapowanie ¿yæ i punktów
+	this->scoreText->value = player->score;
+	this->scoreText->UpdateScore();
+	
+	if (player->lives < this->livesSprites.size())
+	{
+		this->livesSprites.pop_back();
 	}
 }
 
@@ -131,11 +151,18 @@ void GameGraphics::DeleteSpritesOfObjectsThatNoLongerExist()
 
 void GameGraphics::Render(sf::RenderWindow* window)
 {
+	
 	window->draw(*this->playgroundGraphics->playgroundSprite);
 	for (auto& iteratorTrackSprites : this->playgroundGraphics->trackSprites)
 	{
 		window->draw(iteratorTrackSprites);
 	}
+
+	for (auto& iteratorLivesSprites : this->livesSprites)
+	{
+		window->draw(*iteratorLivesSprites);
+	}
+	window->draw(*this->scoreText);
 
 	for (auto& iteratorObjectSprites : this->allObjectSprites)
 	{

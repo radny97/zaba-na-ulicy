@@ -21,6 +21,7 @@ void GameState::Update(sf::RenderWindow* window)
 	//mo¿e jeszcze pauza
 	this->gameLogic->UpdateLogic();
 
+	this->gameGraphics->UpdateHud(this->gameLogic->player);
 	this->gameGraphics->Update(this->gameLogic->GetAllObjects());
 	this->gameGraphics->Render(window);
 }

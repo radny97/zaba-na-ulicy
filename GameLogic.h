@@ -4,6 +4,7 @@
 #include "PlaygroundLogic.h"
 #include <SFML/Graphics.hpp>
 #include "Enums.h"
+#include "Player.h"
 #include <unordered_map>
 #include <iostream> /////////////////////////////////////////
 
@@ -21,7 +22,11 @@ public:
 	void DeleteObjects();
 	PlaygroundLogic* GetPlaygroundLogic();
 
-	collisionType CheckCollision(Object* firstObject, Object* secondObject);
+	CollisionType CheckCollision(Object* firstObject, Object* secondObject);
+	SubStateOfGame GetSubStateOfGame();
+	void SetSubStateOfGame(SubStateOfGame subState);
+
+	Player* player;
 
 private:
 	Object* frogObject;
@@ -36,4 +41,6 @@ private:
 	bool leftKeyPressed;
 	bool rightKeyPressed;
 	int positionOfFrogIterator;
+
+	SubStateOfGame subState;
 };

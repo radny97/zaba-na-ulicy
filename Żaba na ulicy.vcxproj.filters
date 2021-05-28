@@ -93,6 +93,18 @@
     <ClCompile Include="PlaygroundSprite.cpp">
       <Filter>Source Files\Entities Sprites</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HudGraphics.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreText.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="LivesSprite.cpp">
+      <Filter>Source Files\Entities Sprites</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -147,6 +159,18 @@
       <Filter>Header Files\Entities Sprites</Filter>
     </ClInclude>
     <ClInclude Include="PlaygroundSprite.h">
+      <Filter>Header Files\Entities Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HudGraphics.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreText.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="LivesSprite.h">
       <Filter>Header Files\Entities Sprites</Filter>
     </ClInclude>
   </ItemGroup>
