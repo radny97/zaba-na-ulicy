@@ -155,8 +155,11 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectSprite.cpp" />
-    <ClCompile Include="Playground.cpp" />
+    <ClCompile Include="PlaygroundLogic.cpp" />
+    <ClCompile Include="PlaygroundSprite.cpp" />
+    <ClCompile Include="PlaygroundGraphics.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="TrackSprite.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,9 +174,12 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectSprite.h" />
-    <ClInclude Include="Playground.h" />
+    <ClInclude Include="PlaygroundLogic.h" />
+    <ClInclude Include="PlaygroundSprite.h" />
+    <ClInclude Include="PlaygroundGraphics.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="TrackSprite.h" />
     <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

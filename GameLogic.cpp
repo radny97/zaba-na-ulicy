@@ -2,7 +2,7 @@
 
 GameLogic::GameLogic()
 {
-	this->playground = new Playground();
+	this->playground = new PlaygroundLogic();
 
 	this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
 
@@ -30,7 +30,7 @@ void GameLogic::UpdateLogic()
 			{
 				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == collisionType::carCarColision)
 				{
-					//tutaj coœ ze zmian¹ 
+					//tutaj coœ ze zmian¹ prêdkoœci itp
 				}
 				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == collisionType::frogCarCollision)
 				{
@@ -64,6 +64,11 @@ void GameLogic::UpdateLogic()
 std::unordered_map<int, Object*> GameLogic::GetAllObjects()
 {
 	return this->allObjects;
+}
+
+PlaygroundLogic* GameLogic::GetPlaygroundLogic()
+{
+	return this->playground;
 }
 
 collisionType GameLogic::CheckCollision(Object* firstObject, Object* secondObject)

@@ -4,10 +4,19 @@
 class CarObjectSprite : public ObjectSprite
 {
 public:
-	CarObjectSprite()
+	CarObjectSprite() {};
+	CarObjectSprite(bool fromDownToUp)
 	{
-		this->texture = new sf::Texture();
-		this->Load("GraphicsTest/car from bottom.png");
+		if (fromDownToUp == true)
+		{
+			this->texture = new sf::Texture();
+			this->Load("GraphicsTest/car from bottom.png");
+		}
+		else
+		{
+			this->texture = new sf::Texture();
+			this->Load("GraphicsTest/car from top.png");
+		}
 	};
 
 };

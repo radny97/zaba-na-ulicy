@@ -2,6 +2,33 @@
 
 GameGraphics::GameGraphics()
 {
+	
+}
+
+void GameGraphics::SetPlaygroundGraphics(PlaygroundLogic* playgroundLogic)
+{
+	////////////////////////////////////////////////////////
+	//////to to do sprz¹tania 
+	///////////////////////////////////////////////////
+	if (this->playgroundGraphics != NULL)
+	{
+		delete this->playgroundGraphics;
+	}
+	this->playgroundGraphics = new PlaygroundGraphics();
+	this->playgroundGraphics->SetPlaygroundSprite();
+
+	for (auto const& track : playgroundLogic->tracks)
+	{
+		if (track.fromDownToUp == true)
+		{
+			this->playgroundGraphics->SetTrackSprites(track.endOfTrack);
+		}
+		else
+		{
+			this->playgroundGraphics->SetTrackSprites(track.beginingOfTrack);
+		}
+	}
+
 
 }
 
@@ -51,9 +78,8 @@ void GameGraphics::MapOneObjectToSprite(Object* source, ObjectSprite* target)
 	//aby móc mapowaæ pola specyficzne dla ka¿dego obiektu pochodnego
 	//i nie robiæ ha³tury
 
-	CarObject *kp;
-	kp = dynamic_cast<CarObject*>(source);
-
+	//CarObject *kp;
+	//kp = dynamic_cast<CarObject*>(source);
 
 	if (source->type == "frog")
 	{
@@ -84,7 +110,10 @@ ObjectSprite* GameGraphics::ChooseTypeOfNewObjectStripe(Object* source)
 	}
 	else if (source->type == "car")
 	{
-		return new CarObjectSprite();
+		CarObject* sourceCar;
+		sourceCar = dynamic_cast<CarObject*>(source);
+
+		return new CarObjectSprite(sourceCar->fromDownToUp);
 	}
 	else return new ObjectSprite();
 }
@@ -102,6 +131,12 @@ void GameGraphics::DeleteSpritesOfObjectsThatNoLongerExist()
 
 void GameGraphics::Render(sf::RenderWindow* window)
 {
+	window->draw(*this->playgroundGraphics->playgroundSprite);
+	for (auto& iteratorTrackSprites : this->playgroundGraphics->trackSprites)
+	{
+		window->draw(iteratorTrackSprites);
+	}
+
 	for (auto& iteratorObjectSprites : this->allObjectSprites)
 	{
 		window->draw(*iteratorObjectSprites.second);

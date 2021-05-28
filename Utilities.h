@@ -12,5 +12,9 @@ public:
 	static int carImageSizeY;
 
 	static float trackGrade;
+	static int trackGradeDegrees;
+
+	static int widthOfTrack;
+	static int widthOfSpaceBetweenTracks;
 };
 

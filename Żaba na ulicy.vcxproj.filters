@@ -78,11 +78,20 @@
     <ClCompile Include="Utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Playground.cpp">
+    <ClCompile Include="PlaygroundLogic.cpp">
       <Filter>Source Files\Logic</Filter>
     </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaygroundGraphics.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackSprite.cpp">
+      <Filter>Source Files\Entities Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaygroundSprite.cpp">
+      <Filter>Source Files\Entities Sprites</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,7 +131,7 @@
     <ClInclude Include="Utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Playground.h">
+    <ClInclude Include="PlaygroundLogic.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
@@ -130,6 +139,15 @@
     </ClInclude>
     <ClInclude Include="Enums.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaygroundGraphics.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackSprite.h">
+      <Filter>Header Files\Entities Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaygroundSprite.h">
+      <Filter>Header Files\Entities Sprites</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

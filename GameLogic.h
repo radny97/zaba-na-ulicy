@@ -1,7 +1,7 @@
 #pragma once
 #include "FrogObject.h"
 #include "CarObject.h"
-#include "Playground.h"
+#include "PlaygroundLogic.h"
 #include <SFML/Graphics.hpp>
 #include "Enums.h"
 #include <unordered_map>
@@ -19,12 +19,13 @@ public:
 	void GenerateCar(Track track);
 	void InputControl();
 	void DeleteObjects();
+	PlaygroundLogic* GetPlaygroundLogic();
 
 	collisionType CheckCollision(Object* firstObject, Object* secondObject);
 
 private:
 	Object* frogObject;
-	Playground* playground;
+	PlaygroundLogic* playground;
 
 	std::unordered_map<int, Object*> allObjects;
 	std::unordered_map<int, Object*> objectsToDelete;

@@ -2,8 +2,8 @@
 
 ObjectSprite::ObjectSprite()
 {
-	this->texture = new sf::Texture();
-	this->Load("GraphicsTest/car from bottom.png");
+	//this->texture = new sf::Texture();
+	//this->Load("GraphicsTest/car from bottom.png");
 }
 
 void ObjectSprite::Load(std::string filename)
