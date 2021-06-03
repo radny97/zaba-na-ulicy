@@ -157,6 +157,7 @@
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectSprite.cpp" />
+    <ClCompile Include="PauseScreenGraphics.cpp" />
     <ClCompile Include="PauseScreenSprite.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlaygroundLogic.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="LivesSprite.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectSprite.h" />
+    <ClInclude Include="PauseScreenGraphics.h" />
     <ClInclude Include="PauseScreenSprite.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlaygroundLogic.h" />

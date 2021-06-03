@@ -41,7 +41,6 @@ void GameLogic::UpdateLogic()
 	{
 		if (Player::getInstance().GetLives() == 0)
 		{
-			Player::getInstance().SetScore(Player::getInstance().GetScore() + this->scoreInThisRound);
 			this->subState = SubStateOfGame::gameOver;
 		}
 		if (this->positionOfFrogIterator == 0)
@@ -205,10 +204,10 @@ void GameLogic::InputControl()
 		this->subState = SubStateOfGame::pause;
 		this->escapeKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && this->subState == SubStateOfGame::pause && !this->escapeKeyPressed)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && this->subState == SubStateOfGame::pause && !this->enterKeyPressed)
 	{
 		this->subState = SubStateOfGame::game;
-		this->escapeKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
+		this->enterKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter);
 		for (auto& track : this->playground->tracks)
 		{
 			if (track.timer.getElapsedTime().asMilliseconds() > 3000)
@@ -219,6 +218,7 @@ void GameLogic::InputControl()
 		}
 	}
 
+	this->enterKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter);
 	this->escapeKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
 	this->leftKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left);
 	this->rightKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);

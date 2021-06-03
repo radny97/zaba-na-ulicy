@@ -51,4 +51,5 @@ private:
 	bool leftKeyPressed;
 	bool rightKeyPressed;
 	bool escapeKeyPressed;
+	bool enterKeyPressed;
 };

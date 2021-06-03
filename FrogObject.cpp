@@ -101,7 +101,11 @@ void FrogObject::UpdateObject()
 			Player::getInstance().SetLives(Player::getInstance().GetLives() - 1);
 			//this->player->lives -= 1;
 		}
-		Player::getInstance().SetScore(Player::getInstance().GetScore() - this->scoreToDelete);
+		if (Player::getInstance().GetLives() != 0)
+		{
+			Player::getInstance().SetScore(Player::getInstance().GetScore() - this->scoreToDelete);
+		}
+		
 		//player->score -= this->scoreToDelete;
 	}
 

@@ -8,7 +8,7 @@ public:
 	ScoreText() 
 	{
 		sf::Font* font = new sf::Font();
-		font = new sf::Font();
+		//font = new sf::Font();
 		font->loadFromFile("Fonts\\PressStart2P-Regular.ttf");
 
 		this->setString("Score: 0");
@@ -18,7 +18,7 @@ public:
 	};
 	void UpdateScore();
 
-	sf::Font* font;// = new sf::Font();
+	//sf::Font* font;// = new sf::Font();
 
 	int value;
 };

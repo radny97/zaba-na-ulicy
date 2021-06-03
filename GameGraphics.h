@@ -7,7 +7,7 @@
 #include "FrogObjectSprite.h"
 #include "CarObjectSprite.h"
 #include "PlaygroundGraphics.h"
-#include "PauseScreenSprite.h"
+#include "PauseScreenGraphics.h"
 #include "PlaygroundLogic.h"
 #include "Player.h"
 #include "LivesSprite.h"
@@ -34,7 +34,7 @@ public:
 	ScoreText* scoreText;
 
 	PlaygroundGraphics* playgroundGraphics;
-	PauseScreenSprite* pauseScreenSprite;
+	PauseScreenGraphics* pauseScreenGraphics;
 	
 	//sf::Sprite* background;  // wskaŸnik na grafikê do za³adowania
 	//sf::Texture* texture;  // wskaŸnik na teksturê, która zostanie u¿yta jako t³o
